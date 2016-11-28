@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+<script>
+function hello(){
+    document.getElementById("hi").innerHTML = "Hello JavaScript";
+    //alert("Hello JavaScript");
+
+}
+
+function sum(){
+    var max=document.getElementById("myinput").value;
+    var sum=0;
+    for(var i=1; i<=max; i++){
+        sum += i;
+    }
+    document.getElementById("result").innerHTML = sum;
+}
+
+
+</script>
+</head>
+<body onload="hello();">
+    <h1 id="hi"></h1>
+    <input id="myinput" type="text" value="Write a number"/>
+    <button onclick="sum();">Sum</button>
+    <p id="result"></p>
+    
+    <canvas id="mycanvas" width="400" height="300" style="border:2px solid #c3c3c3;"></canvas>
+    <script>
+    var c = document.getElementById("mycanvas");
+    var ctx = c.getContext("2d");
+    ctx.moveTo(200,150);
+    ctx.lineTo(210,150);
+    ctx.lineTo(210,140);
+    ctx.lineTo(190,140);
+    ctx.lineTo(190,160);
+    ctx.stroke();
+    
+    ctx.beginPath();
+    ctx.moveTo(10,250);
+    ctx.arc(50,250,40,Math.PI,0);
+    ctx.stroke();
+    
+    ctx.beginPath();
+    ctx.fillStyle = "green";
+    ctx.fillRect(10,10,150,80);
+    ctx.fill();
+    
+    ctx.beginPath();
+    ctx.fillStyle = "blue";
+    ctx.arc(300,50,40,0,2*Math.PI);
+    ctx.fill();
+    
+    </script>
+</body>
+</html>
