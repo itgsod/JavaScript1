@@ -4,7 +4,7 @@
    <title>Rovarsprak</title>
 <meta http-equiv="content-type" content="text/html;charset=utf-8" />
 <script>
-    function isVowel(c){
+function isVowel(c){
     var vowels=['a','e','i','o','u','y','ä','å','ö',
                 'A','E','I','O','U','Y','Ä','Å','Ö',' '];
     var t=false;
@@ -18,9 +18,9 @@
     }
     return t;
 }
+
 function isConsonant(c){
-    var cons=['b','c','d','f','g','h','j','k','l','m','n','p','q','r','s','t','v','w','x','z',
-              'B','C','D','F','G','H','J','K','L','M','N','P','Q','R','S','T','V','W','X','Z'];
+    var cons=['b','c','d','f','g','j','k','l','m','n','p','q','r','s','t','v','w','x','z'];
     var t=false;
     for(var i=0;i<cons.length;i++){
       
@@ -45,66 +45,28 @@ function isConsonant(c){
             var input = list[j].innerHTML;
         
             var output="";
-       
         
             for(var i=0;i<input.length;i++ ){
                 var c = input[i];
         
-                
                 if(isConsonant(c)) {
                     output += c + 'o' + c;
                 }else{
                     output += c;
-                }
-        
             }
-
+        //alert(output);
             list[j].innerHTML = output;
     
         }
     }
-    
-    function decrypt(){
-      
- 
-        
-        var list = document.getElementsByTagName("p");
-      
-        for(var j=0;j<list.length;j++){
-            var output="";
-            var str = list[j].innerHTML;
-
-            var i=0;
-            while(i<str.length){
-                if(isConsonant(str[i])){
-                    output += str[i];
-                    i+=3;
-                }else{
-                    output += str[i];
-                    i++;
-                }
-               
-            }
-            
-            list[j].innerHTML = String(output);       }
-    }
-    
-    function printout(str){
-        alert("Hi");
-        document.getElementById("out").innerHTML = str;
-        
-    }
     </script>
 </head>
 <body>
-<p>Skolor i utsatta områden har en högre lärartäthet än andra skolor, men som DN:s granskning kunde visa har de samtidigt alltså betydligt lägre andel utbildade lärare.</p>
+<p id="mypara">Skolor i utsatta områden har en högre lärartäthet än andra skolor, men som DN:s granskning kunde visa har de samtidigt alltså betydligt lägre andel utbildade lärare.</p>
 <p>I lagen slår vi fast att vi ska vikta resurser. Det är viktigt att förstå att det är bredare, ett större krav än att bara se till att pengarna fördelas utifrån vad de gör störst nytta. Den allra viktigaste resursen vi har i skolan är förstås lärare och rektorer.
 </p>
-<button onclick="translate();">Encrypt</button>
-<button onclick="decrypt();">Decrypt</button>
-<!--
-<button onclick="printout('Hello');">Print inside a p</button>
-<p id="out">Here</p>
--->
+<button onclick="translate()">Encrypt</button>
 </body>
 </html>
+
+

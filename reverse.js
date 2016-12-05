@@ -16,5 +16,5 @@ function reverse(input){
     return output;
 }
 
-console.log(input)>
+console.log(input);
 console.log(reverse(input));
