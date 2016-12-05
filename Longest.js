@@ -2,27 +2,27 @@
 // longest word from a string
 
 
-var input="I learn JavaScript";
+var input="I learn JS very fast because it is fun";
 
 
 function findLongestWord(input){
 var words=input.split(" ");
 
-var max=0,l,t=0;
+var max=0,len,t=0;
 
 for(var i=0;i<words.length;i++){
    
-    l = words[i].length;
+    len = words[i].length;
     
     // Find the longest length max
     // and record the corresponding index
     
-    if( l > max) { max = l; t=i;}
+    if( len > max) { max = len; t = i;}
     
     
 }
-return words[t];
+return [words[t],max];
 }
 
-
-console.log(findLongestWord(input));
+console.log(input);
+console.log("The longest word is: " + findLongestWord(input)[0] + " and has " + findLongestWord(input)[1] + " characters");

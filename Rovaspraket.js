@@ -1,6 +1,6 @@
 // This program translate a string into rövarspråket
 
-var input="Javascript is a lot fun";
+var input="Javascript is a lot of fun :-)";
 var output="";
 
 function translate(input){
@@ -36,4 +36,5 @@ for(var i=0;i<inputlow.length;i++){
 return output;
 }
 
+console.log(input);
 console.log(translate(input));

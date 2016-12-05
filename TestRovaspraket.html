@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <script>
+    // This program double each consonant in an input string and insert a 'o in between each
+// consonant. It's called Rövarspråket.
+
+function isConsonant(char){
+    var vowels=['a','e','i','o','u','y','ä','å','ö','A','E','I','O','U','Y','Ä','Å','Ö',' '];
+    for(var i=0;i<vowels.length;i++){
+        if(char == vowels[i]){
+            return false;
+        }
+    }
+    return true;
+}
+
+function isVowel(char){
+    var vowels=['a','e','i','o','u','y','ä','å','ö','A','E','I','O','U','Y','Ä','Å','Ö',' '];
+    for(var i=0;i<vowels.length;i++){
+        if(char == vowels[i]){
+            return true;
+        }
+    }
+    return false;
+    
+}
+
+function translate(){
+
+//var input = "It is a lot of fun to learn JavaScript";
+//var input = document.getElementById("mypara1").value;
+var np=0;
+while(true){
+var input = document.getElementsByTagName('p')[np].innerHTML;
+if(np>4){break;}
+var output="";
+
+for(var i=0;i<input.length;i++){
+    var c=input[i];
+    if(!isVowel(c)) {
+        output += c + 'o' + c;
+
+    }else{
+        output += c;
+    }
+}
+
+document.getElementById("mypara"+String(np)).innerHTML="hi";
+
+np++;
+}
+}
+
+
+function decrypt(){
+    var input="Itot isos a lolotot ofof fofunon toto lolearornon JoJavovaSoScocroripoptot";
+    var output="";
+    
+    var i=0;
+    while(i<input.length){
+        c = input[i];
+        
+        if(isConsonant(c)){
+            i+=3;
+        }else if(!isConsonant(c)){
+            i++;
+        }
+        output += c;
+    }
+    
+    return output;
+}
+
+//console.log(translate());
+//console.log(decrypt());
+
+    </script>   
+</head>
+<body>
+<p id="mypara1">
+Med tanke på att vi haft en lag som ska garantera att just resurser används där de gör mest nytta i flera år, så hade jag såklart sett framför mig att vi kommit längre, säger Gustav Fridolin.
+</p>
+<p id="mypara2">
+Han syftar på en lag om ”socioekonomisk resursfördelning” som trädde i kraft 2014 som kräver att kommuner fördelar resurser till skolor efter barnens och elevernas olika behov och förutsättningar.
+</p>
+Skolor i utsatta områden har en högre lärartäthet än andra skolor, men som DN:s granskning kunde visa har de samtidigt alltså betydligt lägre andel utbildade lärare.
+<p id="mypara3">
+I lagen slår vi fast att vi ska vikta resurser. Det är viktigt att förstå att det är bredare, ett större krav än att bara se till att pengarna fördelas utifrån vad de gör störst nytta. Den allra viktigaste resursen vi har i skolan är förstås lärare och rektorer.
+</p>
+
+<p id="output"></p>
+<button type="button" onclick="translate();">Encrypt</button>
+<button type="button" onclick="decrypt();">Decrypt</button>
+
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Rovarsprak</title>
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<script>
+    function isVowel(c){
+    var vowels=['a','e','i','o','u','y','ä','å','ö',
+                'A','E','I','O','U','Y','Ä','Å','Ö',' '];
+    var t=false;
+    for(var i=0;i<vowels.length;i++){
+      
+        if(c == vowels[i]){
+            t=true;
+            break;
+        }
+        
+    }
+    return t;
+}
+
+    function translate(){
+        
+        
+        var list=document.getElementsByTagName("p");
+      
+        for(var j=0;j<list.length;j++){
+            //alert(list[i].innerHTML);
+           
+            var input = list[j].innerHTML;
+        
+            var output="";
+       
+        
+            for(var i=0;i<input.length;i++ ){
+                var c = input[i];
+        
+                if(!isVowel(c)) {
+                    output += c + 'o' + c;
+                }else if(isVowel(c)){
+                    output += c;
+        
+                }else{
+                    output += c;
+                }
+        
+            }
+        //alert(output);
+            list[j].innerHTML = output;
+    
+        }
+    }
+    </script>
+</head>
+<body>
+<p id="mypara">Skolor i utsatta områden har en högre lärartäthet än andra skolor, men som DN:s granskning kunde visa har de samtidigt alltså betydligt lägre andel utbildade lärare.</p>
+<p>I lagen slår vi fast att vi ska vikta resurser. Det är viktigt att förstå att det är bredare, ett större krav än att bara se till att pengarna fördelas utifrån vad de gör störst nytta. Den allra viktigaste resursen vi har i skolan är förstås lärare och rektorer.
+</p>
+<button onclick="translate()">Encrypt</button>
+</body>
+</html>
