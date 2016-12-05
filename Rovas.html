@@ -18,6 +18,20 @@
     }
     return t;
 }
+function isConsonant(c){
+    var cons=['b','c','d','f','g','j','k','l','m','n','p','q','r','s','t','v','w','x','z'];
+    var t=false;
+    for(var i=0;i<cons.length;i++){
+      
+        if(c == cons[i]){
+            t=true;
+            break;
+        }
+        
+    }
+    return t;
+}
+
 
     function translate(){
         
@@ -35,11 +49,9 @@
             for(var i=0;i<input.length;i++ ){
                 var c = input[i];
         
-                if(!isVowel(c)) {
+                
+                if(isConsonant(c)) {
                     output += c + 'o' + c;
-                }else if(isVowel(c)){
-                    output += c;
-        
                 }else{
                     output += c;
                 }
@@ -49,6 +61,16 @@
             list[j].innerHTML = output;
     
         }
+    }
+    
+    function decrypt(str){
+        var output="";
+        
+        
+        
+        
+        
+        return output;
     }
     </script>
 </head>
