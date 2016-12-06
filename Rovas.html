@@ -21,16 +21,16 @@
 function isConsonant(c){
     var cons=['b','c','d','f','g','h','j','k','l','m','n','p','q','r','s','t','v','w','x','z',
               'B','C','D','F','G','H','J','K','L','M','N','P','Q','R','S','T','V','W','X','Z'];
-    var t=false;
+    var test=false;
     for(var i=0;i<cons.length;i++){
       
         if(c == cons[i]){
-            t=true;
+            test=true;
             break;
         }
         
     }
-    return t;
+    return test;
 }
 
 
@@ -46,11 +46,9 @@ function isConsonant(c){
         
             var output="";
        
-        
             for(var i=0;i<input.length;i++ ){
                 var c = input[i];
         
-                
                 if(isConsonant(c)) {
                     output += c + 'o' + c;
                 }else{

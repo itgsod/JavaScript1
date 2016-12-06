@@ -4,13 +4,12 @@
 var input="jag testar JavaScript";
 
 
-function reverse(input){
-    var str=input.split("");
-    var output="";
+function reverse(str){
+
+    var output = "";
     
     for(var i=str.length-1; i>= 0; i--){
         output += str[i];
-       
     }
     
     return output;
