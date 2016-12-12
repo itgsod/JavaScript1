@@ -1,0 +1,111 @@
+
+<!DOCTYPE html >
+<html>
+<head>
+	<title>untitled</title>
+	<meta charset=utf-8" />
+
+</head>
+
+<body>
+	
+    <canvas id="myCanvas" width="600" height="400" style="border:1px solid #000000;"/>
+    <br/>
+    
+    <script>
+        
+        function mySmiley(ctx,x0,y0){
+            //var canvas = document.getElementById("myCanvas");
+            //var ctx = canvas.getContext("2d");
+            ctx.fillStyle = "#0000FF";
+            //ctx.fillRect(300,200,100,50);
+            
+            // Draw eyes
+            ctx.beginPath();
+            ctx.fillStyle = "yellow";
+            ctx.arc(250+x0,150+y0,40,0,2*Math.PI,true);
+            ctx.fill();
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.fillStyle = "#0000FF";
+            ctx.arc(350+x0,150+y0,40,0,2*Math.PI,true);
+            ctx.fill();
+            ctx.stroke();
+            
+            // Draw nose
+            ctx.moveTo(300+x0,200+y0);
+            ctx.lineTo(270+x0,250+y0);
+            ctx.lineTo(330+x0,250+y0);
+            ctx.lineTo(300+x0,200+y0);
+            ctx.stroke();
+            
+            // Draw smile
+            ctx.beginPath();
+            ctx.arc(300+x0,250+y0,100,0,Math.PI);
+            ctx.stroke();
+            
+            
+            // Draw head
+            ctx.beginPath();
+            ctx.arc(300+x0,200+y0,200,0,2*Math.PI);
+            ctx.stroke();
+            
+        }
+        
+        var mySmiley;
+
+function startGame() {
+    mySmiley = new mySmiley(ctx,0,0);
+    myGameArea.start();
+}
+
+var myGameArea = {
+    canvas : document.createElement("canvas"),
+    start : function() {
+        this.canvas.width = 600;
+        this.canvas.height = 400;
+        this.context = this.canvas.getContext("2d");
+        document.body.insertBefore(this.canvas, document.body.childNodes[0]);
+        this.frameNo = 0;
+        this.interval = setInterval(updateGameArea, 20);
+    },
+    stop : function() {
+        clearInterval(this.interval);
+    },    
+    clear : function() {
+        this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    }
+}
+
+function component(width, height, color, x, y) {
+    this.width = width;
+    this.height = height;
+    this.angle = 0;
+    this.x = x;
+    this.y = y;    
+    this.update = function() {
+        ctx = myGameArea.context;
+        ctx.save();
+        ctx.translate(this.x, this.y);        
+        ctx.rotate(this.angle);
+        mySmiley(ctx,this.x,this.y);
+               
+        ctx.restore();    
+    }
+}
+
+function updateGameArea() {
+    myGameArea.clear();
+    myGamePiece.angle += 1 * Math.PI / 180;    
+    myGamePiece.update();
+}
+
+    //mySmiley(100,0);
+        
+    </script>
+
+
+    
+</body>
+
+</html>
