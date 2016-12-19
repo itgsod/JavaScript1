@@ -4,30 +4,36 @@
 <head>
 	<title>untitled</title>
 	<meta charset=utf-8" />
-
+<style>
+    canvas {
+    border:1px solid #d3d3d3;
+    background-color: #f1f1f1;
+}
+</style>
 </head>
 
-<body>
+<body onload="startGame();">
 	
-    <canvas id="myCanvas" width="600" height="400" style="border:1px solid #000000;"/>
+    <canvas id="myCanvas" width="600" height="400"/>
     <br/>
     
     <script>
+        var canvas = document.getElementById("myCanvas");
+        var ctx = canvas.getContext("2d");    
         
-        function mySmiley(ctx,x0,y0){
-            //var canvas = document.getElementById("myCanvas");
-            //var ctx = canvas.getContext("2d");
+        function mySmiley(x0,y0){
+
             ctx.fillStyle = "#0000FF";
             //ctx.fillRect(300,200,100,50);
             
             // Draw eyes
             ctx.beginPath();
-            ctx.fillStyle = "yellow";
+            ctx.fillStyle = "blue";
             ctx.arc(250+x0,150+y0,40,0,2*Math.PI,true);
             ctx.fill();
             ctx.stroke();
             ctx.beginPath();
-            ctx.fillStyle = "#0000FF";
+            ctx.fillStyle = "blue";
             ctx.arc(350+x0,150+y0,40,0,2*Math.PI,true);
             ctx.fill();
             ctx.stroke();
@@ -54,10 +60,10 @@
         
         var mySmiley;
 
-function startGame() {
-    mySmiley = new mySmiley(ctx,0,0);
-    myGameArea.start();
-}
+    function startGame() {
+        mySmiley = new mySmiley(0,0);
+        myGameArea.start();
+    }
 
 var myGameArea = {
     canvas : document.createElement("canvas"),
@@ -101,7 +107,7 @@ function updateGameArea() {
 }
 
     //mySmiley(100,0);
-        
+ 
     </script>
 
 

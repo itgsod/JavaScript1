@@ -2,7 +2,7 @@
 // T.ex reverse("jag testar") print out "ratset gaj"
 
 var input="jag testar JavaScript";
-
+var input="32243";
 
 function reverse(str){
 
