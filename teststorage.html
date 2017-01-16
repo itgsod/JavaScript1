@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <title>Test JSON</title>
+ <meta charset="UTF-8"/>
+</head>
+<body>
+<form>
+<input id="name" type="text" width="10" placeholder="Write your name here"/>
+<br/>
+<textarea id="comment" rows="10" cols="40" placeholder="Write your comment here"></textarea>
+<br></br>
+<button onclick="add('0');">Send</button>
+<button onclick="view();">View</button>
+<button onclick="add('1');">Clear</button>
+</form>
+
+<p id="viewit"></p>
+
+<script>
+    // Initialize global variables
+    var testObject;
+    var cl=false; // Used to clear JSON database
+
+   
+   // Add a new comment in JSON database
+    function add(cl){
+        var name = document.getElementById("name").value;    
+        var comment = document.getElementById("comment").value;
+       
+        var retrievedObject = localStorage.getItem('testObject');
+        testObject = JSON.parse(retrievedObject);
+   
+      
+        if (cl == true){
+            // Clear the JSON dictionary
+            testObject = {'comments':[]};
+            cl = false;
+        }else if (cl == false){
+            // Add a new name:comment in JSON db
+            newobject = {'name':name, 'comment':comment};
+            testObject['comments'].push(newobject);
+         
+        };
+           
+        // Put the object into storage
+        localStorage.setItem('testObject',JSON.stringify(testObject));
+   
+    }
+
+
+
+function view(){
+    
+    // Retrieve the object from storage
+    var retrievedObject = localStorage.getItem('testObject');
+    var obj = JSON.parse(retrievedObject);
+    console.log('retrievedObject: ' + obj['comments']);
+    
+    // Create a list of all comments
+    var list = '';
+    
+    for(dict in obj['comments']){
+       
+        list +=obj['comments'][dict].name;
+        list += ': ';
+        list += obj['comments'][dict].comment;
+        list += "<br/>";
+        
+    }
+    
+   document.getElementById("viewit").innerHTML = list;
+
+}   
+ // Set the view function to be seen once
+ setInterval(view);
+
+</script>
+</body>
+</html>
+
