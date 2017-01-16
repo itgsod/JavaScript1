@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<style>
+		#commentContent {
+			height: 123px; 
+			width: 230px;
+			margin: 5px;
+		}
+
+		#commentName, #commentContent, #commentButton {
+			margin: 5px;
+		}
+
+		.comment{
+			border: 1px solid black;
+			margin: 5px;
+			margin-top: 10px;
+		}
+
+		.comment p {
+			margin: 3px;
+		}
+
+		#name{
+			color: red;
+		}
+	</style>
+</head>
+<body>
+	
+	<div class = "commentSection">
+		<input type="text" id="commentName" placeholder = "Name"><br>
+		<textarea id="commentContent" placeholder = "Comment"></textarea><br>
+		<button id = "commentButton" onclick="addComment();">Submit</button>
+		<button id = "commentClear" onClick="clearComments();">Clear</button>
+		<div id = "comments"> <!-- I den här tomma diven kommer alla kommentarer -->
+
+		</div>
+	</div>
+	<script>
+		//Hämtar sparade kommentarer
+		var comments = JSON.parse(localStorage.getItem("commentJSON"));
+		//Om det inte finns kommentarer, sätt till en tom array
+		if (comments == undefined) {
+			comments = [];
+		}
+		
+		//bygger en ny kommentarJSON när man trycker på knappen
+		function addComment() {
+			var name = document.getElementById("commentName").value;
+			var comment = document.getElementById("commentContent").value;
+			//nya kommentaren i JSON
+			var newComment = {"name":name, "comment":comment};
+			//lägger den i listan
+			comments.push(newComment);
+			//skickar den till html sidan
+			parseComment(newComment);
+			//sparar
+			localStorage.setItem("commentJSON", JSON.stringify(comments));
+		}
+		
+		//bygger en HTML box med inehållet från en kommentar
+		function parseComment(comment) {
+			var box = '<div class = "comment"> <p id = "name">' +
+			comment.name + '</p><p id = "content">' +
+			comment.comment + '</p> </div>';
+			document.getElementById("comments").innerHTML += box;
+		}
+		
+		//rensar alla kommentarer, inklusive sparade
+		function clearComments() {
+			document.getElementById("comments").innerHTML = "";
+			localStorage.removeItem("commentJSON");
+			comments = [];
+		}
+		
+		//bygger alla sparade kommentarer till HTML
+		for (x in comments){
+			parseComment(comments[x]);
+		}
+	</script>
+</body>
+</html>
